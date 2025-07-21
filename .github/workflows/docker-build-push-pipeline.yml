@@ -1,4 +1,4 @@
-name: Docker Build and Push pipeline
+name: Docker Build and Push
 
 on:
   push:
@@ -19,6 +19,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4 # Action to check out your repository code
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3 # Action to set up Docker Buildx
+        # This step is crucial: it sets up a Buildx builder that supports caching.
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3 # Action to log in to Docker Hub
@@ -43,5 +47,5 @@ jobs:
           push: true # Push the image to the registry
           tags: ${{ steps.meta.outputs.tags }} # Use generated tags
           labels: ${{ steps.meta.outputs.labels }} # Use generated labels
-          cache-from: type=gha # Cache layers to speed up builds
-          cache-to: type=gha,mode=max # Cache layers for future builds
+          cache-from: type=gha # Enable caching layers from GitHub Actions cache
+          cache-to: type=gha,mode=max # Store layers in GitHub Actions cache for future builds
