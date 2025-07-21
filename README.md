@@ -61,12 +61,14 @@ This is FastAPI’s interactive API documentation, where you can explore and tes
 #### 📘 Create a Book
 
 ```bash
-curl -X POST http://localhost:8080/books/   -H "Content-Type: application/json"   -d '{
-    "title": "The Hitchhiker's Guide to the Galaxy",
-    "author": "Douglas Adams",
-    "description": "A comedic science fiction series.",
-    "price": 12.99
-  }'
+curl -X POST http://localhost:8080/books/ \
+    -H "Content-Type: application/json" \
+    -d '{
+        "title": "The Hitchhiker'\''s Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "description": "A comedic science fiction series.",
+        "price": 12.99
+    }'
 ```
 
 #### 📚 Get All Books
