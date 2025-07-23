@@ -129,49 +129,73 @@ See `.github/workflows/` for pipeline details.
 
 ## ✅ Testing the API
 
-### Access Swagger UI
+You can test the API using Swagger UI or `curl` commands for both Docker and Helm deployments.
 
-- Locally with Docker: [http://localhost:8080/docs](http://localhost:8080/docs)
-- Deployed via Helm: [http://bookstore.local/docs](http://bookstore.local/docs)
+### Swagger UI
 
-### Example `curl` commands
+- **Docker**: [http://localhost:8080/docs](http://localhost:8080/docs)
+- **Helm (Minikube)**: [http://bookstore.local/docs](http://bookstore.local/docs)
 
-Create a book:
-Docker:
+---
+
+### `curl` Examples
+
+#### 1. Create a Book
+
+**Docker:**
+
 ```bash
-curl -X POST http://localhost:8080/books/     -H "Content-Type: application/json"     -d '{
-        "title": "The Hitchhiker'''s Guide to the Galaxy",
+curl -X POST http://localhost:8080/books/ \
+    -H "Content-Type: application/json" \
+    -d '{
+        "title": "The Hitchhiker'\''s Guide to the Galaxy",
         "author": "Douglas Adams",
         "description": "A comedic science fiction series.",
         "price": 12.99
     }'
 ```
-helm:
+
+**Helm:**
+
 ```bash
-curl -X POST http://bookstore.local/books/     -H "Content-Type: application/json"     -d '{
-        "title": "The Hitchhiker'''s Guide to the Galaxy",
+curl -X POST http://bookstore.local/books/ \
+    -H "Content-Type: application/json" \
+    -d '{
+        "title": "The Hitchhiker'\''s Guide to the Galaxy",
         "author": "Douglas Adams",
         "description": "A comedic science fiction series.",
         "price": 12.99
     }'
 ```
 
-List all books:
-Docker:
+---
+
+#### 2. List All Books
+
+**Docker:**
+
 ```bash
 curl http://localhost:8080/books/
 ```
-Helm:
+
+**Helm:**
+
 ```bash
 curl http://bookstore.local/books/
 ```
 
-Get a book by ID (e.g., ID = 1):
-Docker:
+---
+
+#### 3. Get a Book by ID (e.g., ID = 1)
+
+**Docker:**
+
 ```bash
 curl http://localhost:8080/books/1
 ```
-Helm:
+
+**Helm:**
+
 ```bash
 curl http://bookstore.local/books/1
 ```
