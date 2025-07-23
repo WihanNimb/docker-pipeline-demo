@@ -12,7 +12,7 @@ A simple RESTful API for managing books, built with **FastAPI** and **SQLAlchemy
 - [🚀 CI/CD Pipeline](#-cicd-pipeline)
 - [✅ Testing the API](#-testing-the-api)
 - [🧾 API Endpoints](#-api-endpoints)
-- [📝 Additional Notes](#additional-notes)
+- [📝 Additional Notes](#-additional-notes)
 
 ---
 
@@ -137,7 +137,7 @@ See `.github/workflows/` for pipeline details.
 ### Example `curl` commands
 
 Create a book:
-
+Docker:
 ```bash
 curl -X POST http://localhost:8080/books/     -H "Content-Type: application/json"     -d '{
         "title": "The Hitchhiker'''s Guide to the Galaxy",
@@ -145,7 +145,9 @@ curl -X POST http://localhost:8080/books/     -H "Content-Type: application/json
         "description": "A comedic science fiction series.",
         "price": 12.99
     }'
-
+```
+helm:
+```bash
 curl -X POST http://bookstore.local/books/     -H "Content-Type: application/json"     -d '{
         "title": "The Hitchhiker'''s Guide to the Galaxy",
         "author": "Douglas Adams",
@@ -155,18 +157,22 @@ curl -X POST http://bookstore.local/books/     -H "Content-Type: application/jso
 ```
 
 List all books:
-
+Docker:
 ```bash
 curl http://localhost:8080/books/
-
+```
+Helm:
+```bash
 curl http://bookstore.local/books/
 ```
 
 Get a book by ID (e.g., ID = 1):
-
+Docker:
 ```bash
 curl http://localhost:8080/books/1
-
+```
+Helm:
+```bash
 curl http://bookstore.local/books/1
 ```
 
